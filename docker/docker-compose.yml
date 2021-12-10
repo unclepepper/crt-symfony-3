@@ -9,7 +9,7 @@ services:
       - ./../db:/var/lib/postgresql/data
     environment:
         POSTGRES_PASSWORD: password
-        POSTGRES_DB: dbtest
+        POSTGRES_DB: symfony
         PGDATA: /var/lib/postgresql/data/pgdata
     ports:
         - 5432:5432
@@ -24,10 +24,7 @@ services:
         PGID: ${PGID}
     depends_on:
       - db
-    environment:
-      - APP_ENV=${APP_ENV}
-      - APP_SECRET=${APP_SECRET}
-      - DATABASE_URL=${DATABASE_URL}
+    
     volumes:
       - ./../src/:/var/www
 
