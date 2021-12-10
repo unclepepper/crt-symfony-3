@@ -97,6 +97,34 @@ CREATE SEQUENCE public.news_id_seq
 ALTER TABLE public.news_id_seq OWNER TO postgres;
 
 --
+-- Name: user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."user" (
+    id integer NOT NULL,
+    email character varying(180) NOT NULL,
+    roles json NOT NULL,
+    password character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public."user" OWNER TO postgres;
+
+--
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO postgres;
+
+--
 -- Data for Name: article; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -110,6 +138,7 @@ COPY public.article (id, news_id, text, create_at) FROM stdin;
 
 COPY public.doctrine_migration_versions (version, executed_at, execution_time) FROM stdin;
 DoctrineMigrations\\Version20211210094605	2021-12-10 09:48:33	80
+DoctrineMigrations\\Version20211210183717	2021-12-10 18:37:49	64
 \.
 
 
@@ -128,6 +157,14 @@ COPY public.news (id, title, is_show, description) FROM stdin;
 
 
 --
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."user" (id, email, roles, password) FROM stdin;
+\.
+
+
+--
 -- Name: article_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -139,6 +176,13 @@ SELECT pg_catalog.setval('public.article_id_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('public.news_id_seq', 9, true);
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 1, false);
 
 
 --
@@ -166,10 +210,25 @@ ALTER TABLE ONLY public.news
 
 
 --
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: idx_23a0e66b5a459a0; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX idx_23a0e66b5a459a0 ON public.article USING btree (news_id);
+
+
+--
+-- Name: uniq_8d93d649e7927c74; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX uniq_8d93d649e7927c74 ON public."user" USING btree (email);
 
 
 --
