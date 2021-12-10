@@ -1,20 +1,120 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}crt-symfony-3{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      .nav a{
+      color: #fff;
+      }
+      .nav a:hover{
+      color: #00EDFF;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<header>
+  <div class="collapse bg-info nav" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-6 py-5">
+        <h4 class="text-white">Об авторе</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none">Перейти на страницу автора</a></li>
+          </ul>
+          <p class="text-muted"> GITHUB: <a class="text-decoration-none" href="https://github.com/unclepepper/crt-symfony-3">Here!</a></p>
+        </div>
+         <div class="col-sm-2 offset-md-1 py-5">
+          <h4 class="text-white">Блог</h4>
+          <ul class="list-unstyled">
+            <li><a href="/article" class="text-decoration-none active">Статьи</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-2 offset-md-1 py-5">
+          <h4 class="text-white">Admin</h4>
+          <ul class="list-unstyled">
+            <li><a href="/admin" class="text-decoration-none">Войти</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        {# <img src="/images/logo.png" alt="crt" width="20" height="20" class="me-2"> #}
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> 
+        <strong>Главная</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
-</div>
+  {% block main %}
+  <main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">crt-symfony-3</h1>
+        <p class="lead text-muted">My third homework project</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">Об авторе</a>
+          <a href="#" class="btn btn-secondary my-2">Блог</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class=" album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+       {# {% for article in articles %}              #}
+        <div class="col mb-2">
+        <div class="card shadow-sm p-2"> 
+               {# <p class="card-text">Title: {{ article.title }}</p> #}
+               {# <p class="card-text">Text: {{ article.text }}</p>   #}
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+         {# {% endfor %}   #}
+       </div>
+    </div>
+  </div>
+  </main>
+  {% endblock %}
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Blog example is &copy; crt-symfony-3</p>
+    <p class="mb-0">Get to source files? <a href="/">Visit the homepage</a> go over <a href=https://github.com/unclepepper/crt-symfony-3">github repository</a>.</p>
+  </div>
+</footer>
+
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 {% endblock %}
