@@ -1,5 +1,4 @@
 docker/.env
 db/pgdata
-src/bin
 src/vendor
 
