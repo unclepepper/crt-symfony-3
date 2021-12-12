@@ -1,13 +1,11 @@
-{# {% extends 'base.html.twig' %} #}
-{% extends 'main.html.twig' %}
+{% extends 'base.html.twig' %}
+{# {% extends 'main.html.twig' %} #}
 
 {% block title %}crt-symfony-3{% endblock %}
 
 {% block body %}
   
-  {% block header %} 
-    {{ include('view/header.html.twig') }}
-  {% endblock %}
+  
 
   {% block main %}
     <section class="py-5 text-center container">
@@ -45,15 +43,10 @@
             {% endfor %}  
           </div>
         </div>
-      </div>
-      
-      
+      </div> 
   {% endblock %}
 
   
-  {% block footer %}
-    {{ include('view/footer.html.twig') }}
-  {% endblock %}
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
 {% endblock %}
 
