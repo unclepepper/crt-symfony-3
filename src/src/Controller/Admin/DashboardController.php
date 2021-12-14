@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\News as NewsEntity;
 use App\Entity\Article as ArticleEntity;
+use App\Entity\User as UserEntity;
+
 
 
 class DashboardController extends AbstractDashboardController
@@ -32,6 +34,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Panel', 'fa fa-home');
         yield MenuItem::linkToCrud('News', 'fas fa-list', NewsEntity::class);
         yield MenuItem::linkToCrud('Article', 'fas fa-list', ArticleEntity::class);
+        yield MenuItem::linkToCrud('User', 'fas fa-list', UserEntity::class);
+
 
     }
 }
