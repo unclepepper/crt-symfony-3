@@ -15,6 +15,7 @@ use App\Entity\User as UserEntity;
 
 class DashboardController extends AbstractDashboardController
 {
+   
     /**
      * @Route("/admin", name="admin")
      */
