@@ -28,15 +28,18 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('PanelAdmin');
+            
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Panel', 'fa fa-home');
-        yield MenuItem::linkToCrud('News', 'fas fa-list', NewsEntity::class);
-        yield MenuItem::linkToCrud('Article', 'fas fa-list', ArticleEntity::class);
-        yield MenuItem::linkToCrud('User', 'fas fa-list', UserEntity::class);
-
+        
+        yield MenuItem::linkToDashboard('Panel', 'fab fa-android');
+        yield MenuItem::linktoRoute('Back to Index', 'fas fa-home', 'index');
+        yield MenuItem::linkToCrud('News', 'fas fa-comments', NewsEntity::class);
+        yield MenuItem::linkToCrud('Article', 'fas fa-comments', ArticleEntity::class);
+        yield MenuItem::linkToCrud('User', 'fas fa-user', UserEntity::class);
+        
 
     }
 }

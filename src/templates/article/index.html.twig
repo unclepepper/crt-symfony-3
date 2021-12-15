@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    {% block main %}
+      <div class=" album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1  g-3">
+          {% for new in news %}
+                     
+
+            <div class="cols">
+            <div class="card shadow-sm p-2 card-height"> 
+                  <p class="card-text">Новость:  {{ new.title }}</p>
+                  <p class="card-text">Описание:  {{ new.description }}</p>  
+                <div class="card-body">
+                 {% for article in articles %}
+                  <div class="d-flex justify-content-between align-items-center row row-cols-1  g-3">
+                   
+                   <div class="card shadow-sm p-2">
+                   {{ article.text }}
+                   </div>
+                    
+                    {# <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="news/{{ new.id}}" class="text-decoration-none btn-sm btn-outline-secondary">Подробнее</a></button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Коментарии</button>
+                    </div> #}
+                    {# <small class="text-muted">9 mins</small> #}
+                  </div>
+                   {% endfor %}
+                </div>
+              </div>
+            </div>
+          
+            {% endfor %}  
+
+          </div>
+        </div>
+      </div> 
+    {% endblock %}
+{% endblock %}

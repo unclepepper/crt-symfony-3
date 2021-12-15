@@ -35,9 +35,14 @@ class News
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="news")
+     * @ORM\OneToMany(targetEntity=Article::class,  mappedBy="news")
      */
     private $articals;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="id_news")
+     */
+    private $article;
 
     public function __construct()
     {
@@ -113,5 +118,21 @@ class News
         }
 
         return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->title;
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,17 @@ class Article
      * @ORM\ManyToOne(targetEntity=News::class, inversedBy="articals")
      */
     private $news;
+
+    /**
+     * @ORM\OneToMany(targetEntity=News::class, mappedBy="article")
+     */
+    private $id_news;
+
+    public function __construct()
+    {
+        $this->id_news = new ArrayCollection();
+        
+    }
 
     public function getId(): ?int
     {
@@ -72,4 +85,35 @@ class Article
 
         return $this;
     }
+
+    /**
+     * @return Collection|News[]
+     */
+    public function getIdNews(): Collection
+    {
+        return $this->id_news;
+    }
+
+    public function addIdNews(News $idNews): self
+    {
+        if (!$this->id_news->contains($idNews)) {
+            $this->id_news[] = $idNews;
+            $idNews->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdNews(News $idNews): self
+    {
+        if ($this->id_news->removeElement($idNews)) {
+            // set the owning side to null (unless already changed)
+            if ($idNews->getArticle() === $this) {
+                $idNews->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+    
 }
