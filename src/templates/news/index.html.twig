@@ -4,9 +4,26 @@
 
 {% block body %}
    <div class="container mt-5 shadow-sm p-3 mb-5 bg-white rounded">
-        <h3 class="m-3">{{ new.getTitle() }}</h1>
+        <h3 class="m-3">{{ new.title }}</h1>
         <p>
-            {{ new.getDescription() }}
+            {{ new.description }}
         </p>
-    </div>        
+        <div class="col align-self-end card shadow-sm p-2">
+                   {% for article in new.articals %}
+                  
+                  {{ article.text | striptags }}
+                   </div>
+                   <p class="text-end">
+                    <small class="text-muted col">{{article.createAt.format('d.m.Y')}}</small> 
+                   </p>
+                    <div class="btn-group ">
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="news/{{ new.id}}" class="text-decoration-none btn-sm btn-outline-secondary">Подробнее</a></button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Коментировать</button>
+                      <div class="col col-lg-10"></div>
+                    </div>
+                   
+                    {% endfor %}
+                  </div>
+    </div>  
+          
 {% endblock %}
