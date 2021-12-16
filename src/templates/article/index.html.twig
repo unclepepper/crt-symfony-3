@@ -12,23 +12,29 @@
 
             <div class="cols">
             <div class="card shadow-sm p-2 card-height"> 
-                  <p class="card-text">Новость:  {{ new.title }}</p>
-                  <p class="card-text">Описание:  {{ new.description }}</p>  
+                  <p class="card-text"><b>Новость:</b>  {{ new.title }}</p>
+                  <p class="card-text"><b>Описание:</b>  {{ new.description }}</p>  
                 <div class="card-body">
-                 {% for article in articles %}
+                
                   <div class="d-flex justify-content-between align-items-center row row-cols-1  g-3">
-                   
-                   <div class="card shadow-sm p-2">
-                   {{ article.text }}
+                  <h5><b>Коментарии:</b></h5>
+                   <div class="col align-self-end card shadow-sm p-2">
+                   {% for article in new.articals %}
+                  
+                  {{ article.text | striptags }}
                    </div>
-                    
-                    {# <div class="btn-group">
+                   <p class="text-end">
+                    <small class="text-muted col">{{article.createAt.format('d.m.Y')}}</small> 
+                   </p>
+                    <div class="btn-group ">
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a href="news/{{ new.id}}" class="text-decoration-none btn-sm btn-outline-secondary">Подробнее</a></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Коментарии</button>
-                    </div> #}
-                    {# <small class="text-muted">9 mins</small> #}
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Коментировать</button>
+                      <div class="col col-lg-10"></div>
+                    </div>
+                   
+                    {% endfor %}
                   </div>
-                   {% endfor %}
+                 
                 </div>
               </div>
             </div>
